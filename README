@@ -1,0 +1,109 @@
+NAME
+    Text.CSV - Create and Parse CSV data.
+
+Synopsis
+    var attr = { }; var my_csv = new Text.CSV(attr);
+
+  Text.CSV()
+    var attr = { }; var my_csv = new Text.CSV(attr);
+
+        Available options for attr:
+            quote_char
+                The char used for quoting fields containing blanks, by
+                default the double quote character ("""). A value of undef
+                suppresses quote chars. (For simple cases only).
+
+            eol     
+                An end-of-line string to add to rows, usually "undef"
+                (nothing, default), "\012" (Line Feed) or "\015\012" (Car-
+                riage Return, Line Feed)
+
+            escape_char
+                The char used for escaping certain characters inside quoted
+                fields, by default the same character. (""")
+
+            sep_char
+                The char used for separating fields, by default a comme.
+                (",")
+
+            binary
+                If this attribute is TRUE, you may use binary characters in
+                quoted fields, including line feeds, carriage returns and
+                NUL bytes. (The latter must be escaped as ""0".) By default
+                this feature is off.
+
+            always_quote
+                By default the generated fields are quoted only, if they
+                need to, for example, if they contain the separator. If you
+                set this attribute to a TRUE value, then all fields will be
+                quoted. This is typically easier to handle in external
+                applications. (Poor creatures who aren’t using 
+                Text::CSV_XS. :-)
+
+  version()
+        var my_csv  = new Text.CSV();
+        var version = my_csv.version();
+
+        It returns the current module version.
+
+  status()
+        var my_csv = new Text.CSV();
+        var status = my_csv.status();
+
+        This object function returns success (or failure) of "combine()" or
+        "parse()", whichever was called more recently.
+
+  error_input()
+        var my_csv = new Text.CSV();
+        var bad_argument = my_csv.error_input();
+
+        This object function returns the erroneous argument (if it exists)
+        of "combine()" or "parse()", whichever was called more recently.
+
+  string()
+        var my_csv = new Text.CSV();
+        var line = my_csv.string();
+
+        This object function returns the input to "parse()" or the resul-
+        tant CSV string of "combine()", whichever was called more recently.
+
+  fields()
+        var my_csv = new Text.CSV();
+        var columns = my_csv->fields();
+
+        This object function returns the input to "combine()" or the resul-
+        tant decomposed fields of "parse()", whichever was called more
+        recently.
+
+  combine()
+        var my_csv = new Text.CSV();
+        var status = $csv->combine(columns);
+
+        This object function constructs a CSV string from the arguments,
+        returning success or failure.  Failure can result from lack of
+        arguments or an argument containing an invalid character.  Upon
+        success, "string()" can be called to retrieve the resultant CSV
+        string.  Upon failure, the value returned by "string()" is unde-
+        fined and "error_input()" can be called to retrieve an invalid
+        argument.
+
+  parse()
+        var my_csv = new Text.CSV();
+        var status = $csv->parse(line);
+
+        This object function decomposes a CSV string into fields, returning
+        success or failure.  Failure can result from a lack of argument or
+        the given CSV string is improperly formatted.  Upon success,
+        "fields()" can be called to retrieve the decomposed fields .  Upon
+        failure, the value returned by "fields()" is undefined and
+        "error_input()" can be called to retrieve the invalid argument.
+
+AUTHOR
+    Adam R. Schobelock <schobes@gmail.com>
+
+COPYRIGHT
+    Copyright (c) 2006 by Teleperformance.
+
+    This program is free software; you can redistribute it and/or modify it
+    under the terms as Perl itself.
+

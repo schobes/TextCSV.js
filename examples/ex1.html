@@ -1,0 +1,26 @@
+<html>
+ <head>
+  <script language="javascript" src="../lib/Text/CSV.js"></script>
+  <script language="javascript">
+    var my_csv = new Text.CSV({ quote_char : "'" , eol : "\012" });
+    var array  = ["testing", "testing again" ];
+    if (!(my_csv.combine(array))) {
+        alert("Field: " + my_csv.error_input() + " is invalid.");
+    }
+    var string = my_csv.string();
+    alert(string);
+
+    var my_csv = new Text.CSV({ quote_char : "'" });
+    if (!(my_csv.parse(string))) {
+        alert("Invalid: "  + my_csv.error_input());
+    }
+
+    var obj = my_csv.fields();
+    var text = "";
+    for (var i = 0; i < obj.length; i++) {
+        text += "Element (" + i + "): " + obj[i] + "\n";
+    }
+    alert(text);
+  </script>
+ </head>
+</html>

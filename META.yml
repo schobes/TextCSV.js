@@ -1,0 +1,12 @@
+--- #YAML:1.0
+name: Text.CSV
+version: 0.01
+author:
+  - Adam R. Schobelock <schobes@gmail.com>
+abstract: Create / Parse CSV data.
+license: perl
+resources:
+  license: http://dev.perl.org/licenses/
+build_requires:
+provides: {}
+
